@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'deep-space-black': '#0E0E10',
+        'deep-space-black': '#0f1624',
         'dark-graphite-gray': '#1A1C1F',
         'gunmetal-gray': '#2D2F33',
         'vscode-blue': '#007ACC',
