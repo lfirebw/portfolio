@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Project } from "@/types/Project";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-
+import styles from "./ProjectModal.module.css";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -67,7 +67,7 @@ export default function ProjectModal({
                     )}
                     {(typeof body === "string" ?
                         (
-                            <div className="text-gray-300 mb-4" dangerouslySetInnerHTML={{ __html: body as string }} />
+                            <div className={`text-gray-300 mb-4 ${styles.detailsContent}`} dangerouslySetInnerHTML={{ __html: body as string }} />
                         ) :
                         (
                             <div className="text-gray-300 mb-4">{body}</div>

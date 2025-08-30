@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Project } from "@/types/Project";
 import { ProjectModal } from "@/components";
-
+import { useTranslation } from "react-i18next";
 export default function ProjectCard({
     title,
     description,
@@ -13,7 +13,15 @@ export default function ProjectCard({
     body
 }: Project) 
 {
+    const { t } = useTranslation();
     const [showModal, setShowModal] = useState(false);
+    const getDetailsProject = (): any =>{
+        if(typeof body !== "string"){
+            return body;
+        }
+        const bodyStr = body as string;
+        return bodyStr && bodyStr.trim().length > 0 ? bodyStr : description;
+    }
     return (
         <>
             <div className="bg-dark-graphite-gray rounded-lg shadow-lg overflow-hidden flex flex-col">
@@ -38,7 +46,7 @@ export default function ProjectCard({
                             className="px-4 py-1 bg-gunmetal-gray text-neon-cyan rounded hover:bg-vscode-blue transition"
                             onClick={()=> setShowModal(true)}
                         >
-                            Read more
+                            { t("readmore") }
                         </button>
                         {(github && github.length  > 0) && (
                             <a
@@ -72,7 +80,7 @@ export default function ProjectCard({
                 github={github}
                 demo={demo}
                 techs={techs}
-                body={body}
+                body={getDetailsProject()}
                 images={images}
                 onClose={() => setShowModal(false)}
                 />
